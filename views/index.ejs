@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Upload</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <style>
+    /* General styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+        color: #333;
+    }
+    p {
+        color: #666;
+        line-height: 1.6;
+    }
+    .upload-section {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px dashed #ccc;
+        border-radius: 8px;
+    }
+    .upload-section h2 {
+        margin-bottom: 10px;
+    }
+    .upload-section label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .upload-section input[type="file"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+    .upload-section button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .upload-section button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Our Data Analysis Service</h1>
+
+    <p>At our service, we specialize in analyzing your data to provide insights and solutions tailored to your needs. Whether it's financial data, market research, or any other form of data, we're here to help you make informed decisions.</p>
+    <h2>Upload Your Data</h2>
+    <p>Upload your data file below(and also email address etc) and provide any specific instructions you have for analysis. Our experts will review your data and get back to you with insights, all for free!</p>
+
+    
+</div>
+
+
+  <div class="container">
+    <h1 class="text-center">File Upload</h1>
+    <% if (typeof msg != 'undefined') { %>
+      <div class="alert alert-info"><%= msg %></div>
+    <% } %>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <input type="file" name="myFile" class="form-control">
+      </div>
+      <input type="submit" value="Upload" class="btn btn-primary btn-block">
+    </form>
+    <% if (typeof file != 'undefined') { %>
+      <hr>
+      <h3 class="text-center">Uploaded File</h3>
+      <img src="<%= file %>" class="img-thumbnail" />
+    <% } %>
+    <hr>
+  </div>
+</body>
+</html>

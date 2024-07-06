@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Uploaded Files</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Uploaded Files</h1>
+    <div class="row">
+      <% if (files.length > 0) { %>
+        <% files.forEach(function(file) { %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <p class="card-text"><%= file %></p>
+                <a href="/uploads/<%= file %>" download class="btn btn-primary btn-block">Download</a>
+                <form action="/delete" method="POST" class="mt-2">
+                  <input type="hidden" name="filename" value="<%= file %>">
+                  <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p class="text-center">No files uploaded yet.</p>
+      <% } %>
+    </div>
+    <a href="/" class="btn btn-secondary btn-block">Back to Upload</a>
+  </div>
+</body>
+</html>
